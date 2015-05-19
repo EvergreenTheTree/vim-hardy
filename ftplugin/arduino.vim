@@ -124,8 +124,8 @@ endfunction
 
 " ------------------------- Commands ------------------------------------- {{{
 
-command! -nargs=0 ArduinoUpload call HardyArduinoUpload()
-command! -nargs=0 ArduinoVerify call HardyArduinoVerify()
+command! -buffer -nargs=0 ArduinoUpload call HardyArduinoUpload()
+command! -buffer -nargs=0 ArduinoVerify call HardyArduinoVerify()
 
 " ------------------------- END Commands --------------------------------- }}}
 
