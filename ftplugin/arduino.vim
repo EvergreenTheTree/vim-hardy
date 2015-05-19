@@ -35,7 +35,7 @@ if !exists('g:hardy_split_direction')
 endif
 
 if !exists('g:hardy_window_size')
-    let g:hardy_window_size = 0
+    let g:hardy_window_size = 15
 endif
 
 " ------------------------- END Settings --------------------------------- }}}
