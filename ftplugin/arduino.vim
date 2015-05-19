@@ -42,6 +42,8 @@ endif
 
 " ------------------------- Functions ------------------------------------ {{{
 
+" Run arduino executable with a given command.  Returns -1 if the DISPLAY
+" environment variable is not set.
 function! HardyRunArduino(command)
     if !exists("$DISPLAY")
         echohl Error
@@ -50,7 +52,7 @@ function! HardyRunArduino(command)
         return -1
     endif
 
-    l:result = system(g:hardy_arduino_path . ' ' . g:hardy_arduino_options .
+    let l:result = system(g:hardy_arduino_path . ' ' . g:hardy_arduino_options .
                 \ ' ' . a:command)
 
     return l:result
@@ -60,6 +62,7 @@ endfunction
 let s:split_commands = [
     \ 'aboveleft ', 'belowright ', 'vertical aboveleft ', 'vertical belowright ']
 
+" Show information in arduino window.
 function! HardyShowInfo(results)
     let l:winexists = bufwinnr(g:hardy_window_name)
 
@@ -103,12 +106,14 @@ function! HardyShowInfo(results)
     call append(0, split(a:results, '\v\n'))
 endfunction
 
+" Verify the current file using arduino --verify
 function! HardyArduinoVerify()
     let l:result = HardyRunArduino('--verify ' . bufname("%"))
 
     call HardyShowInfo(l:result)
 endfunction
 
+" Upload the current file using arduino --upload
 function! HardyArduinoUpload()
     let l:result = HardyRunArduino('--upload ' . bufname("%"))
 
@@ -119,8 +124,8 @@ endfunction
 
 " ------------------------- Commands ------------------------------------- {{{
 
-command! -nargs=0 HardyArduinoUpload call HardyArduinoUpload()
-command! -nargs=0 HardyArduinoVerify call HardyArduinoVerify()
+command! -nargs=0 ArduinoUpload call HardyArduinoUpload()
+command! -nargs=0 ArduinoVerify call HardyArduinoVerify()
 
 " ------------------------- END Commands --------------------------------- }}}
 
