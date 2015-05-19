@@ -96,10 +96,10 @@ function! HardyShowInfo(results)
         " Set all the options for the newly created buffer
         setlocal filetype=arduinoinfo
         setlocal buftype=nofile
-    elseif
+    else
         execute l:winexists . 'wincmd w'
         " Delete everything in the buffer
-        %d
+        normal! ggdG
     endif
 
     " Insert the resulting information
