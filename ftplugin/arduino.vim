@@ -104,13 +104,13 @@ function! HardyShowInfo(results)
 endfunction
 
 function! HardyArduinoVerify()
-    let l:result = HardyRunArduino('verify ' . bufname("%"))
+    let l:result = HardyRunArduino('--verify ' . bufname("%"))
 
     call HardyShowInfo(l:result)
 endfunction
 
 function! HardyArduinoUpload()
-    let l:result = HardyRunArduino('upload ' . bufname("%"))
+    let l:result = HardyRunArduino('--upload ' . bufname("%"))
 
     call HardyShowInfo(l:result)
 endfunction
