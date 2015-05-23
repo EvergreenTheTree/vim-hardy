@@ -33,7 +33,7 @@ COMMANDS                                                        *HardyCommands*
     Compiles and uploads the current file to an arduino board which is
     connected to your computer.  The board which the code is uploaded to can
     be configured via the Arduino IDE interface, or it can be specifically set
-    using |g:hardy_arduino_options|.
+    using |'g:hardy_arduino_options'|.
 
 +----------------------------------------------------------------------------+~
 OPTIONS                                                          *HardyOptions*
@@ -71,7 +71,7 @@ Values: Any non-negative integer
 Default: 15
 
 Sets the default window height/width used for the information window.  If
-|g:hardy_split_direction| is '0' or '1', it is used for the height of the split.
+|'g:hardy_split_direction'| is '0' or '1', it is used for the height of the split.
 If the split direction is '2' or '3', it is used for the width.  Setting this
 to 0 will use whatever the defualt behaviour is to set the split height/width.
 
@@ -95,7 +95,7 @@ TODO                                                                *HardyTodo*
 - Add command for creating new sketches
 
 +----------------------------------------------------------------------------+~
-LICENSE                                                         *ScrawlLicense*
+LICENSE                                                          *HardyLicense*
 
 Hardy is released under the same license as vim itself. See ':help license'.
 
