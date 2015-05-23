@@ -45,5 +45,5 @@ Credits
 License
 -------
 
-vim-hardy is dsitributed under the same license as vim itself.  See `:help license`.
+vim-hardy is distributed under the same license as vim itself.  See `:help license`.
 
