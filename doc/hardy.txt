@@ -92,6 +92,7 @@ All credit goes to Johannes Hoff and contributers for the arduino syntax file.
 +----------------------------------------------------------------------------+~
 TODO                                                                *HardyTodo*
 
+- Implement a basic serial monitor in vim using pyserial
 - Add command for creating new sketches
 
 +----------------------------------------------------------------------------+~

@@ -1,47 +1,30 @@
-" ============================================================================
 " File: arduino.vim
 " Description: vim filetype plugin which provides support for the Arduino
 " Maintainer: Evergreen
-" Last Change: May 19th, 2015
+" Last Change: July 12th, 2015
 " License: Vim License
-" ============================================================================
 
-" ------------------------- Script Initialization ------------------------ {{{
-
+" SCRIPT INITIALIZATION {{{
 if exists('b:did_ftplugin')
     finish
 endif
 
 let b:did_ftplugin = 1
+" }}}
 
-" ------------------------- END Script Initialization -------------------- }}}
+" SETTINGS {{{
+let g:hardy_arduino_path = get(g:, 'hardy_arduino_path', 'arduino')
 
-" ------------------------- Settings ------------------------------------- {{{
+let g:hardy_arduino_options = get(g:, 'hardy_arduino_options', '')
 
-if !exists('g:hardy_arduino_path')
-    let g:hardy_arduino_path = 'arduino'
-endif
+let g:hardy_window_name = get(g:, 'hardy_window_name', '__Arduino_Info__')
 
-if !exists('g:hardy_arduino_options')
-    let g:hardy_arduino_options = ''
-endif
+let g:hardy_split_direction = get(g:, 'hardy_split_direction', 0)
 
-if !exists('g:hardy_window_name')
-    let g:hardy_window_name = '__Arduino_Info__'
-endif
+let g:hardy_window_size = get(g:, 'hardy_window_size', 15)
+" }}}
 
-if !exists('g:hardy_split_direction')
-    let g:hardy_split_direction = 0
-endif
-
-if !exists('g:hardy_window_size')
-    let g:hardy_window_size = 15
-endif
-
-" ------------------------- END Settings --------------------------------- }}}
-
-" ------------------------- Functions ------------------------------------ {{{
-
+" FUNCTIONS {{{
 " Run arduino executable with a given command.  Returns -1 if the DISPLAY
 " environment variable is not set.
 function! HardyRunArduino(command)
@@ -119,14 +102,11 @@ function! HardyArduinoUpload()
 
     call HardyShowInfo(l:result)
 endfunction
+" }}}
 
-" ------------------------- END Functions -------------------------------- }}}
-
-" ------------------------- Commands ------------------------------------- {{{
-
+" COMMANDS {{{
 command! -buffer -nargs=0 ArduinoUpload call HardyArduinoUpload()
 command! -buffer -nargs=0 ArduinoVerify call HardyArduinoVerify()
-
-" ------------------------- END Commands --------------------------------- }}}
+" }}}
 
 " vim: set sw=4 sts=4 et fdm=marker:
