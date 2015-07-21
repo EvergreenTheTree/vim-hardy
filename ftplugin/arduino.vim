@@ -1,7 +1,7 @@
 " File: arduino.vim
-" Description: vim filetype plugin which provides support for the Arduino
+" Description: Arduino language integration for vim
 " Maintainer: Evergreen
-" Last Change: July 12th, 2015
+" Last Change: July 16th, 2015
 " License: Vim License
 
 " SCRIPT INITIALIZATION {{{
