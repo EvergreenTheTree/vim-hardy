@@ -1,7 +1,7 @@
 " File: arduino.vim
 " Description: Arduino language integration for vim
 " Maintainer: Evergreen
-" Last Change: July 16th, 2015
+" Last Change: July 27th, 2015
 " License: Vim License
 
 " SCRIPT INITIALIZATION {{{
@@ -13,7 +13,13 @@ let b:did_ftplugin = 1
 " }}}
 
 " SETTINGS {{{
-let g:hardy_arduino_path = get(g:, 'hardy_arduino_path', 'arduino')
+if has("mac")
+    let default_bin = "/Applications/Arduino.app/Contents/MacOS/Arduino"
+else
+    let default_bin = "arduino" " In the $PATH
+endif
+
+let g:hardy_arduino_path = get(g:, 'hardy_arduino_path', default_bin)
 
 let g:hardy_arduino_options = get(g:, 'hardy_arduino_options', '')
 
@@ -28,9 +34,9 @@ let g:hardy_window_size = get(g:, 'hardy_window_size', 15)
 " Run arduino executable with a given command.  Returns -1 if the DISPLAY
 " environment variable is not set.
 function! HardyRunArduino(command)
-    if !exists("$DISPLAY")
+    if !exists("$DISPLAY") && !has("mac")
         echohl Error
-        echom "Hardy:  A graphical user interface such as X must be present"
+        echom "Hardy:  A graphical user interface such as X or OS X must be present"
         echohl Normal
         return -1
     endif
@@ -91,14 +97,14 @@ endfunction
 
 " Verify the current file using arduino --verify
 function! HardyArduinoVerify()
-    let l:result = HardyRunArduino('--verify ' . bufname("%"))
+    let l:result = HardyRunArduino('--verify ' . expand("%:p"))
 
     call HardyShowInfo(l:result)
 endfunction
 
 " Upload the current file using arduino --upload
 function! HardyArduinoUpload()
-    let l:result = HardyRunArduino('--upload ' . bufname("%"))
+    let l:result = HardyRunArduino('--upload ' . expand("%:p"))
 
     call HardyShowInfo(l:result)
 endfunction
