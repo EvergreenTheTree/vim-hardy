@@ -15,6 +15,8 @@ let b:did_ftplugin = 1
 " SETTINGS {{{
 if has("mac")
     let default_bin = "/Applications/Arduino.app/Contents/MacOS/Arduino"
+elseif has("win32")
+    let default_bin = "arduino_debug.exe" " this has better command-line support in windows
 else
     let default_bin = "arduino" " In the $PATH
 endif
@@ -34,7 +36,7 @@ let g:hardy_window_size = get(g:, 'hardy_window_size', 15)
 " Run arduino executable with a given command.  Returns -1 if the DISPLAY
 " environment variable is not set.
 function! HardyRunArduino(command)
-    if !exists("$DISPLAY") && !has("mac")
+    if !exists("$DISPLAY") && !has("mac") && !has("win32")
         echohl Error
         echom "Hardy:  A graphical user interface such as X or OS X must be present"
         echohl Normal
