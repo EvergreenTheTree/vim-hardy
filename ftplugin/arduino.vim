@@ -34,7 +34,7 @@ let g:hardy_window_size = get(g:, 'hardy_window_size', 15)
 " Run arduino executable with a given command.  Returns -1 if the DISPLAY
 " environment variable is not set.
 function! HardyRunArduino(command)
-    if !exists("$DISPLAY") && !has("mac")
+    if !exists("$DISPLAY") && !has("mac") && !has('win32')
         echohl Error
         echom "Hardy:  A graphical user interface such as X or OS X must be present"
         echohl Normal
